@@ -1,77 +1,61 @@
 # MDP REPRESENTATION
 
 ## AIM:
-The MDP Represntation of reaching a college from home without any traffic.
+
+To create a MDP (Markov Decision Process) for the undertaken problem statement
 
 ## PROBLEM STATEMENT:
-To travel from home to college in an optimal path where you are not facing any traffic.
 
 ### Problem Description
-To reach college from home without any traffic.
+
+The problem involves detecting road blockages in a city. The goal is to identify the optimal path for vehicles to take when a road blockage occurs. The environment is modeled as a Markov Decision Process, where states represent road conditions, actions represent possible routes or decisions, and rewards are based on reaching a destination efficiently.
 
 ### State Space
-```
-I    ->>  Start(home)
-II    ->> Terminal state(traffic)
-III    ->> Intermediate state(no traffic)
-IV    ->> Goal(College)
-```
+
+The state space consists of all possible road conditions at a given time. Each state represents a specific configuration of roads, including whether they are blocked or clear.
+
+
+    State variables: S = {S_1, S_2, ..., S_n}, where S_i represents a possible state, 
+    including the conditions of different roads (e.g., road open, road blocked).
+
 ### Sample State
-![image](https://github.com/user-attachments/assets/a3ba5517-7553-48f5-b81e-cc046bb4b168)
 
+A sample state could be: S = {Road_1: Clear, Road_2: Blocked, Road_3: Clear}
 
-### Action Space:
-```
-Action Space:{0,1,2,3,4}
-0    ->>  Same State
-1    ->> Left
-2    ->> Down
-3    ->> Right
-4    ->> Up
-```
+### Action Space
+
+The action space consists of the set of possible actions that a vehicle can take when encountering a blocked road. These actions involve choosing an alternative route or proceeding along the current path.
+
+    Action variables: A = {A_1, A_2, ..., A_n}, where A_i represents an action, 
+    such as "Take Alternate Route 1" or "Proceed on Current Route."
+
 ### Sample Action
-![image](https://github.com/user-attachments/assets/33c2abd0-82e0-44a6-86e8-cbf4e2f2bbd3)
+
+A sample action could be: A = {Take Alternate Route}
 
 ### Reward Function
-![image](https://github.com/user-attachments/assets/af22e027-ac99-41ca-9d8e-5c683eaabe5c)
+
+The reward function assigns rewards based on the effectiveness of the chosen action in reaching the destination without delay. A higher reward is given for efficient routes, while a penalty is assigned for blocked roads or unnecessary detours.
+
+    Reward function: R(S, A) = Positive reward for reaching the destination efficiently, 
+    negative reward for taking a detour or encountering a blockage.
 
 ### Graphical Representation
-![image](https://github.com/user-attachments/assets/a414eba3-74f9-4394-a6d7-cb9814cbd158)
+
+![WhatsApp Image 2024-09-03 at 16 33 51_cad4ad2e](https://github.com/user-attachments/assets/1576ca9e-b2f6-45d5-a1e4-b630f7becf9b)
 
 
 ## PYTHON REPRESENTATION:
-```
-mdp={
-    1:{
-    0:[(1,0,0,False)],
-    1:[(1,0,0,False)],
-    2:[(0.95,3,0,False),(0.05,2,0,True)],
-    3:[(0.05,2,0,True),(0.95,3,0,False)],
-    4:[(1,0,0,False)]},
-    2:{
-       0:[(1,2,0,True)],
-       1:[(1,2,0,True)],
-       2:[(1,2,0,True)],
-       3:[(1,2,0,True)],
-       4:[(1,2,0,True)]}, 
-    3:{
-       0:[(1,3,0,False)],
-       1:[(1,3,0,False)],
-       2:[(1,3,0,False)],
-       3:[(0.99,4,1,True),(0.01,1,0,False)],
-       4:[(0.01,1,0,False),(0.99,4,1,True)]}, 
-    4:{
-       0:[(1,4,0,True)],
-       1:[(1,4,0,True)],
-       2:[(1,4,0,True)],
-       3:[(1,4,0,True)],
-       4:[(1,4,0,True)]}   
-}
-```
+
+![image](https://github.com/user-attachments/assets/d1289e5a-f490-4a1e-bb0b-cb712679eef1)
+
+
 ## OUTPUT:
-![image](https://github.com/user-attachments/assets/0f3cba83-ca18-499f-b505-73916bd4fb89)
+
+![image](https://github.com/user-attachments/assets/d6e82257-b4d2-48cf-8541-d0d833d1b5b6)
 
 
 ## RESULT:
-Thus, The MDP Represntation of reaching a college from home without any traffic is successfully executed.
+
+The MDP simulation successfully detects road blockages and determines optimal actions for avoiding blocked roads. The rewards indicate the efficiency of the chosen routes, helping vehicles reach their destinations while minimizing delays due to road blockages.
 
